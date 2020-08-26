@@ -39,7 +39,7 @@ RUN apk --no-cache --no-progress upgrade && \
     echo 'CookieAuthentication 1' >>/etc/tor/torrc && \
     echo 'CookieAuthFile /etc/tor/run/control.authcookie' >>/etc/tor/torrc && \
     echo 'CookieAuthFileGroupReadable 1' >>/etc/tor/torrc && \
-    echo 'DNSPort 5353' >>/etc/tor/torrc && \
+    echo 'DNSPort 53' >>/etc/tor/torrc && \
     echo 'DataDirectory /var/lib/tor' >>/etc/tor/torrc && \
     echo 'ExitPolicy reject *:*' >>/etc/tor/torrc && \
     echo 'Log notice stderr' >>/etc/tor/torrc && \
