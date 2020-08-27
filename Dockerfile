@@ -1,6 +1,8 @@
 FROM alpine
 MAINTAINER David Personette <dperson@gmail.com>
 
+ARG DNS_PORT
+
 # Install tor and privoxy
 RUN apk --no-cache --no-progress upgrade && \
     apk --no-cache --no-progress add bash curl privoxy shadow tini tor tzdata&&\
@@ -39,7 +41,7 @@ RUN apk --no-cache --no-progress upgrade && \
     echo 'CookieAuthentication 1' >>/etc/tor/torrc && \
     echo 'CookieAuthFile /etc/tor/run/control.authcookie' >>/etc/tor/torrc && \
     echo 'CookieAuthFileGroupReadable 1' >>/etc/tor/torrc && \
-    echo 'DNSPort 53' >>/etc/tor/torrc && \
+    echo "DNSPort ${DNS_PORT}" >>/etc/tor/torrc && \
     echo 'DataDirectory /var/lib/tor' >>/etc/tor/torrc && \
     echo 'ExitPolicy reject *:*' >>/etc/tor/torrc && \
     echo 'Log notice stderr' >>/etc/tor/torrc && \
